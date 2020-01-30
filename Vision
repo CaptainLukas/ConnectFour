@@ -1,5 +1,6 @@
 Die Idee ist ein 4 in einer Reihe Spiel, bei dem es möglich ist, dass zwei Spieler über das Internet gegeneinander spielen.
 Das Spiel soll so entwickelt werden, dass die verschiedenen Komponenten austauschbar und erweiterbar sind.
+
 Grundkomponenten sind : UserInterface,Netwerk,Spiellogik,Steuerung,Main
 
 UserInterface: Hier soll über eine definierte Schnittstelle das Spielfeld auf welcher Oberfläche(vorerst nur Konsole) auch immer angezeigt werden können.
