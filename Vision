@@ -1,15 +1,32 @@
 Die Idee ist ein 4 in einer Reihe Spiel, bei dem es möglich ist, dass zwei Spieler über das Internet gegeneinander spielen.
 Das Spiel soll so entwickelt werden, dass die verschiedenen Komponenten austauschbar und erweiterbar sind.
+Für jede Komponente wird ein eigenes ".py" file angelegt um diese klar voneinander zu trennen.
+Im Verlauf des Projektes können weitere Komponenten hinzugefügt werden, wenn diese für sinnvoll erachtet werden.
 
-Grundkomponenten sind : UserInterface,Netwerk,Spiellogik,Steuerung,Main
+Grundkomponenten sind
+* UserInterface
+* Netwerk
+* Spiellogik
+* Steuerung
+* Main
 
-**UserInterface**: Hier soll über eine definierte Schnittstelle das Spielfeld auf welcher Oberfläche(vorerst nur Konsole) auch immer angezeigt werden können.
+UserInterface:
+Hier soll über eine definierte Schnittstelle das Spielfeld auf welcher Oberfläche(vorerst nur Konsole) auch immer angezeigt werden können.
 Dafür soll der Klasse das Spielfeld als Array übergeben werden. Weitere Informationen können optional hinzugefügt werden.
 
-**Netwerk**: Hier soll die komplette Netzwerkkommunikation stattfinden. Vor Spielstart wird hier die Verbindung initiiert.Pro Zug wird das jeweils aktuelle Spielfeld verschickt.
+Netwerk:
+Hier soll die komplette Netzwerkkommunikation stattfinden. Vor Spielstart wird hier die Verbindung initiiert.Pro Zug wird das jeweils aktuelle Spielfeld verschickt.
 
-**Spiellogik**:Überprüft ob ein Zug valide ist und den Spielregeln entspricht. Überprüft auch, ob das Spiel von einem Spieler gewonnen wurde.
+Spiellogik:
+Überprüft ob ein Zug valide ist und den Spielregeln entspricht. Überprüft auch, ob das Spiel von einem Spieler gewonnen wurde.
 
-Steuerung: Nimmt die Eingaben des Benutzers entgegen und verarbeitet diese eventuell.
+Steuerung:
+Nimmt die Eingaben des Benutzers entgegen und verarbeitet diese eventuell.
 
-Main: Steuert den Spielablauf und das Zusammenspiel der Komponenten.
+Main:
+Steuert den Spielablauf und das Zusammenspiel der Komponenten.
+
+
+Zukunft:
+Eine schöne GUI für das Spiel bauen.
+Eine AI auf dieses Spiel trainieren und auf https://www.kaggle.com/c/connectx laden -> profit.
