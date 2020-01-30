@@ -9,3 +9,5 @@ a Game where the Goal is to _Connect Four_
 |3|#|+|+|#|#|#|+|
 |2|#|#|+|#|+|#|#|
 |1|+|+|#|+|+|#|+|
+
+A python project by **Peter** and **Lukas**
