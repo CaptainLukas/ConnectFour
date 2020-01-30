@@ -3,13 +3,13 @@ Das Spiel soll so entwickelt werden, dass die verschiedenen Komponenten austausc
 
 Grundkomponenten sind : UserInterface,Netwerk,Spiellogik,Steuerung,Main
 
-UserInterface: Hier soll über eine definierte Schnittstelle das Spielfeld auf welcher Oberfläche(vorerst nur Konsole) auch immer angezeigt werden können.
+**UserInterface**: Hier soll über eine definierte Schnittstelle das Spielfeld auf welcher Oberfläche(vorerst nur Konsole) auch immer angezeigt werden können.
 Dafür soll der Klasse das Spielfeld als Array übergeben werden. Weitere Informationen können optional hinzugefügt werden.
 
-Netwerk: Hier soll die komplette Netzwerkkommunikation stattfinden. Vor Spielstart wird hier die Verbindung initiiert.Pro Zug wird das jeweils aktuelle Spielfeld verschickt.
+**Netwerk**: Hier soll die komplette Netzwerkkommunikation stattfinden. Vor Spielstart wird hier die Verbindung initiiert.Pro Zug wird das jeweils aktuelle Spielfeld verschickt.
 
-Spiellogik:Überprüft ob ein Zug valide ist und den Spielregeln entspricht. Überprüft auch, ob das Spiel von einem Spieler gewonnen wurde.
+**Spiellogik**:Überprüft ob ein Zug valide ist und den Spielregeln entspricht. Überprüft auch, ob das Spiel von einem Spieler gewonnen wurde.
 
 Steuerung: Nimmt die Eingaben des Benutzers entgegen und verarbeitet diese eventuell.
 
-Main:Steuert den Spielablauf und das Zusammenspiel der Komponenten.
+Main: Steuert den Spielablauf und das Zusammenspiel der Komponenten.
