@@ -26,7 +26,7 @@ Nimmt die Eingaben des Benutzers entgegen und verarbeitet diese eventuell.
 Main:
 Steuert den Spielablauf und das Zusammenspiel der Komponenten.
 
-
+#############################
 Zukunft:
 Eine schöne GUI für das Spiel bauen.
 Eine AI auf dieses Spiel trainieren und auf https://www.kaggle.com/c/connectx laden -> profit.
