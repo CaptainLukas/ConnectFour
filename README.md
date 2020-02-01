@@ -1,7 +1,7 @@
 # ConnectFour
 a Game where the Goal is to _Connect Four_
 
-||0|1|2|3|4|5|6|
+||1|2|3|4|5|6|7|
 |-|-|-|-|-|-|-|-|
 |5||+||#|#|+|+|
 |4||+||+|+|#|#|
