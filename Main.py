@@ -1,7 +1,5 @@
 import pandas as pd
-import UserInterfaceConsole
-import Spielfeld
-import GameLogic
+from GameLogic import GameLogic
 
 game = GameLogic()
 game.startGame()
