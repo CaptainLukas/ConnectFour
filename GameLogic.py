@@ -1,6 +1,7 @@
 from Spielfeld import Spielfeld
 from Spielerfarbe import Spielerfarbe as sf
 import UserInterfaceConsole as ui
+import ControlsConsole
 
 class GameLogic:
 
@@ -14,6 +15,7 @@ class GameLogic:
         self.__matchfield.newField()
 
         self.testgame()
+        ControlsConsole.GetUserinput()
         return
 
     def testgame(self):
