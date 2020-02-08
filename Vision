@@ -5,7 +5,7 @@ Im Verlauf des Projektes können weitere Komponenten hinzugefügt werden, wenn d
 
 Grundkomponenten sind
 * UserInterface
-* Netwerk
+* Netzwerk
 * Spiellogik
 * Steuerung
 * Main
@@ -14,7 +14,7 @@ UserInterface:
 Hier soll über eine definierte Schnittstelle das Spielfeld auf welcher Oberfläche(vorerst nur Konsole) auch immer angezeigt werden können.
 Dafür soll der Klasse das Spielfeld als Array übergeben werden. Weitere Informationen können optional hinzugefügt werden.
 
-Netwerk:
+Netzwerk:
 Hier soll die komplette Netzwerkkommunikation stattfinden. Vor Spielstart wird hier die Verbindung initiiert.Pro Zug wird das jeweils aktuelle Spielfeld verschickt.
 
 Spiellogik:
