@@ -3,15 +3,17 @@ import msvcrt
 #'Run' -> 'Edit Configurations' -> check 'Emulate terminal in output console'
 
 # Gets the next pressed key of the user and returns it as a string
+# return: the pressed key as a string
 def GetUserinput():
-    while True:
+    invalidkey = True
+    while invalidkey:
         try:
             key = msvcrt.getch()
             key = key.decode("utf-8")
         except UnicodeDecodeError:
             print('please try another key')
-            #read one key that is in queue due to the error and is not an input from the user
+            #read one key that is in queue due to the error and is not an input from the user but a valid key
             msvcrt.getch()
             continue
-        print(key)
+        invalidkey = False
     return key
