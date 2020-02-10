@@ -1,22 +1,19 @@
-import keyboard
-import _thread
-import sys
-from msvcrt import getch
-#https://pypi.org/project/keyboard/
-#https://stackoverflow.com/questions/24072790/detect-key-press-in-python
+import msvcrt
+# to get this working in PyCharm you need to change the Run Config as following:
+#'Run' -> 'Edit Configurations' -> check 'Emulate terminal in output console'
 
-def keypress():
-    global char
-    char = getch()
-
+# Gets the next pressed key of the user and returns it as a string
+# return: the pressed key as a string
 def GetUserinput():
-    #keyboard.wait('1')
-
-    while True:  # making a loop
-        try:  # used try so that if user pressed other than the given key error will not be shown
-            if keyboard.is_pressed('q'):  # if key 'q' is pressed
-                print('You Pressed A Key!')
-                break  # finishing the loop
-        except:
-            pass
-    return
+    invalidkey = True
+    while invalidkey:
+        try:
+            key = msvcrt.getch()
+            key = key.decode("utf-8")
+        except UnicodeDecodeError:
+            print('please try another key')
+            #read one key that is in queue due to the error and is not an input from the user but a valid key
+            msvcrt.getch()
+            continue
+        invalidkey = False
+    return key
