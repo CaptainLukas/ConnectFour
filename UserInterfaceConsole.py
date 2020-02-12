@@ -1,4 +1,6 @@
 from Spielerfarbe import Spielerfarbe
+import os
+
 def PrintField(field):
     i = 5
     print('  1     2     3     4     5     6     7')
@@ -21,4 +23,9 @@ def PrintWin():
     return
 
 def PrintLoss():
+    return
+
+def PrintGetConnectionInfo():
+    os.system("cls")#sollte Console leeren
+    print("Please enter Ip to connect to:")
     return
