@@ -25,7 +25,11 @@ def PrintWin():
 def PrintLoss():
     return
 
-def PrintGetConnectionInfo():
+def PrintGetIPInfo():
     os.system("cls")#sollte Console leeren
-    print("Please enter Ip to connect to:")
+    print("Please enter IP to connect to:")
+    return
+
+def PrintGetPortInfo():
+    print("Please enter port to connect to:")
     return
