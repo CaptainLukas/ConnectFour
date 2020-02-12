@@ -27,7 +27,7 @@ class Spielfeld:
 
     # initialize a new instance of Spielfeld
     def __init__(self, farbe):
-        self.__field= self.newField() # self._field ersetzt durch self.__field - PETER
+        self.__field= self.newField()
         self.farbe = farbe
         self.data=[]
 
@@ -36,7 +36,7 @@ class Spielfeld:
     def newField(self):
         self.__field = list()
         i=0
-        while (i < 41): # 41? bei 0 ist die erste Eintrag? - PETER
+        while (i < 42): # 41? bei 0 ist die erste Eintrag?- 42 stimmt schon, weil dann geht er wenn i 42 ist nicht mehr in die schleife, mit i 41 aber schon noch. mit i < 41 wird das letzte Listenelement ausgelassen. -Lukas
             self.__field.append(Spielerfarbe.leer)
             i += 1
         return self.__field
@@ -44,7 +44,7 @@ class Spielfeld:
     # gets the matchfield if not None
     # return:list returns the matchfield
     def getField(self):
-        if self.__field == None: # wie kann ein None entstehen? - PETER
+        if self.__field == None: # wie kann ein None entstehen?- in unserer anwendung theoretisch garnicht, hier geht es um allgemeine stabilität des Codes. Falls jemand fremder den code verwendet und von außen das __field auf None setzt, würde die Funktion sonst abstürzen.
             #Error werfen
             print('Error')
 
