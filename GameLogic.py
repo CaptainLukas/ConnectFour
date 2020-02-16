@@ -21,12 +21,9 @@ class GameLogic:
         self.__matchfield.newField()
 
         self.testgame()
+        print('testing get char:')
         ControlsConsole.GetUserInputChar()
-        network = EnhancedNetwork('192.168.1.86')
-        for i in range(1,10):
-            network.sendMessage("Hello World")
-            #print(network.receiveMessage())
-        #self.startConncetion()
+        self.startConnection()
         return
 
     def testgame(self):
@@ -38,11 +35,12 @@ class GameLogic:
         ui.PrintField(self.__matchfield.getField())
         return
     
-    #def startConnection():
-    #    ui.PrintGetIPInfo()
-    #    ip = cc.GetUserInputString()
-    #    ui.PrintGetPortInfo()
-    #    port = cc.GetUserInputString()
-    #    self.__conncetion.startNewConnection(ip,port,30)#30?
-    #    self.__connection.sendMessage('startGame')
+    def startConnection(self):
+        ui.PrintGetIPInfo()
+        ip = cc.GetUserInputString()
+        ui.PrintGetPortInfo()
+        port = cc.GetUserInputString()
+        network = EnhancedNetwork(ip)
+        for i in range(1, 10):
+            network.sendMessage("Hello World")
         
