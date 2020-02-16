@@ -32,7 +32,6 @@ class EnhancedNetwork:
         return
 
     def receiveMessage(self):
-<<<<<<< HEAD
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind(('127.0.0.1',self.__port))
         s.listen(1)
@@ -46,6 +45,3 @@ class EnhancedNetwork:
         conn.close()
         s.close()
         return message
-=======
-        return #message
->>>>>>> 7e82657fc57c353e093e8a9789f9bab02826d589
