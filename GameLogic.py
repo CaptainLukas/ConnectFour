@@ -4,7 +4,7 @@ import UserInterfaceConsole as ui
 import ControlsConsole
 from Network import EnhancedNetwork
 import ControlsConsole as cc
-From Network import EnhancedNetwork
+from Network import EnhancedNetwork
 
 class GameLogic:
 
@@ -12,8 +12,8 @@ class GameLogic:
     __connection = EnhancedNetwork
 
     def __init__(self):
-        self.__matchfield = Spielfeld()
-        self.__connection = EnhancedNetwork()
+        self.__matchfield = Spielfeld(sf.gelb)
+        self.__connection = EnhancedNetwork('192.168.1.86')
         self.data=[]
 
     def startGame(self):
@@ -21,12 +21,12 @@ class GameLogic:
         self.__matchfield.newField()
 
         self.testgame()
-        ControlsConsole.GetUserinput()
+        ControlsConsole.GetUserInputChar()
         network = EnhancedNetwork('192.168.1.86')
         for i in range(1,10):
             network.sendMessage("Hello World")
-            print(network.receiveMessage())
-        self.startConncetion()
+            #print(network.receiveMessage())
+        #self.startConncetion()
         return
 
     def testgame(self):
@@ -38,11 +38,11 @@ class GameLogic:
         ui.PrintField(self.__matchfield.getField())
         return
     
-    def startConnection():
-        ui.PrintGetIPInfo()
-        ip = cc.GetUserInputString()
-        ui.PrintGetPortInfo()
-        port = cc.GetUserInputString()
-        self.__conncetion.startNewConnection(ip,port,30)#30?
-        self.__connection.sendMessage('startGame')
+    #def startConnection():
+    #    ui.PrintGetIPInfo()
+    #    ip = cc.GetUserInputString()
+    #    ui.PrintGetPortInfo()
+    #    port = cc.GetUserInputString()
+    #    self.__conncetion.startNewConnection(ip,port,30)#30?
+    #    self.__connection.sendMessage('startGame')
         

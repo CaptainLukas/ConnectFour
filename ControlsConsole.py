@@ -18,6 +18,6 @@ def GetUserInputChar():
         invalidkey = False
     return key
 
-def GetUserInputString()
+def GetUserInputString():
     userInput = input()
     return userInput

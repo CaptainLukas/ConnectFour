@@ -7,22 +7,20 @@ class EnhancedNetwork:
     __port=45688
     __buffersize=256
     __ip = ''
-    #connection =
-    #__buffersize
 
     def __init__(self,ip):
         self.__ip = ip
         return
     
-    def startNewConnection(ip,port,buffersize)
+    #def startNewConnection(ip,port,buffersize)
         #check ip is valid ip
         #check port is int
         #check buffersize is int
-        return
+    #    return
     
-    def endConnection()
-        self.__connection.close()
-        return
+    #def endConnection()
+      #  self.__connection.close()
+     #   return
 
     def sendMessage(self, message):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
