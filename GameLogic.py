@@ -2,6 +2,7 @@ from Spielfeld import Spielfeld
 from Spielerfarbe import Spielerfarbe as sf
 import UserInterfaceConsole as ui
 import ControlsConsole
+from Network import EnhancedNetwork
 
 class GameLogic:
 
@@ -16,6 +17,10 @@ class GameLogic:
 
         self.testgame()
         ControlsConsole.GetUserinput()
+        network = EnhancedNetwork('192.168.1.86')
+        for i in range(1,10):
+            network.sendMessage("Hello World")
+            print(network.receiveMessage())
         return
 
     def testgame(self):
