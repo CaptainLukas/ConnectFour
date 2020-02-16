@@ -27,7 +27,7 @@ class Spielfeld:
 
     # initialize a new instance of Spielfeld
     def __init__(self, farbe):
-        self._field= self.newField()
+        self.__field= self.newField()
         self.farbe = farbe
         self.data=[]
 
@@ -36,7 +36,7 @@ class Spielfeld:
     def newField(self):
         self.__field = list()
         i=0
-        while (i < 42):
+        while (i < 42): # 41? bei 0 ist die erste Eintrag?- 42 stimmt schon, weil dann geht er wenn i 42 ist nicht mehr in die schleife, mit i 41 aber schon noch. mit i < 41 wird das letzte Listenelement ausgelassen. -Lukas
             self.__field.append(Spielerfarbe.leer)
             i += 1
         return self.__field
@@ -44,7 +44,7 @@ class Spielfeld:
     # gets the matchfield if not None
     # return:list returns the matchfield
     def getField(self):
-        if self.__field == None:
+        if self.__field == None: # wie kann ein None entstehen?- in unserer anwendung theoretisch garnicht, hier geht es um allgemeine stabilität des Codes. Falls jemand fremder den code verwendet und von außen das __field auf None setzt, würde die Funktion sonst abstürzen.
             #Error werfen
             print('Error')
 
@@ -60,7 +60,7 @@ class Spielfeld:
             return False
         else:
             i = (column - 1) * 6
-            while i < 42:
+            while i < 41:
                 if (self.__field[i]==Spielerfarbe.leer):
                     check = self.__changeField(i,color)
                     if not check: return check
@@ -72,7 +72,9 @@ class Spielfeld:
     # index:int [0,41] the absolute index of the field to be set
     # return:bool returns whether the change was done
     def __changeField(self,index, color):
-        if index > 41 or index < 0: return False
-        if self.__field[index] != Spielerfarbe.leer: return False
+        if index > 41 or index < 0: # 42 ersetzt durch 41
+            return False
+        if self.__field[index] != Spielerfarbe.leer:
+            return False
         self.__field[index] = color
         return True

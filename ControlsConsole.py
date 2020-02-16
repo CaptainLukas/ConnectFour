@@ -4,7 +4,7 @@ import msvcrt
 
 # Gets the next pressed key of the user and returns it as a string
 # return: the pressed key as a string
-def GetUserinput():
+def GetUserInputChar():
     invalidkey = True
     while invalidkey:
         try:
@@ -17,3 +17,7 @@ def GetUserinput():
             continue
         invalidkey = False
     return key
+
+def GetUserInputString()
+    userInput = input()
+    return userInput
