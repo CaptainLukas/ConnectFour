@@ -1,13 +1,10 @@
 from Spielfeld import Spielfeld
 from Spielerfarbe import Spielerfarbe as sf
 import UserInterfaceConsole as ui
-<<<<<<< HEAD
 import ControlsConsole
 from Network import EnhancedNetwork
-=======
 import ControlsConsole as cc
 From Network import EnhancedNetwork
->>>>>>> 7e82657fc57c353e093e8a9789f9bab02826d589
 
 class GameLogic:
 
@@ -24,16 +21,12 @@ class GameLogic:
         self.__matchfield.newField()
 
         self.testgame()
-<<<<<<< HEAD
         ControlsConsole.GetUserinput()
         network = EnhancedNetwork('192.168.1.86')
         for i in range(1,10):
             network.sendMessage("Hello World")
             print(network.receiveMessage())
-=======
         self.startConncetion()
-        
->>>>>>> 7e82657fc57c353e093e8a9789f9bab02826d589
         return
 
     def testgame(self):
