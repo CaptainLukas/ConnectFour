@@ -42,8 +42,9 @@ class GameLogic:
         port = cc.GetUserInputString()
         network = EnhancedNetwork(ip)
         network.connectToOther()
-        for i in range(1, 10):
-            network.sendMessage("Hello World")
-        network.receiveMessage()
+        #for i in range(1, 10):
+        network.sendMessage("Hello World")
+        print(network.receiveMessage())
+        print('Test')
         network.endConnection()
         

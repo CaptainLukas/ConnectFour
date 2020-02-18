@@ -1,6 +1,7 @@
 import socket
 
 #https://wiki.python.org/moin/TcpCommunication
+#https://docs.python.org/3/howto/sockets.html
 
 # vl nur einfach die ausgewählte Spalte schicken und jeder schaut sich selbst an wie der move wird
 class EnhancedNetwork:
@@ -32,7 +33,7 @@ class EnhancedNetwork:
         try:
             self.__connection.bind(('127.0.0.1', self.__port))
             self.__connection.listen(1)
-            self.__connection = self.__connection.accept()
+            self.__connection, addr = self.__connection.accept()
             print('Connected')
             self.__connectionStarted = True
         except:
@@ -43,6 +44,7 @@ class EnhancedNetwork:
     def endConnection(self):
         if not self.__connectionStarted: return
         self.__connection.close()
+        print('Connection closed')
         return
 
     #sends message to connection
@@ -55,14 +57,27 @@ class EnhancedNetwork:
         return
 
     #receives message from connection
+    #def receiveMessage(self):
+    #    if not self.__connectionStarted: return
+
+     #   try:
+     #       message = 'defaultMessage'
+     #       while 1:
+     #           message = self.__connection.recv(self.__buffersize)
+     #           if len(message) == 0: break
+     #       print('Message received')
+     #   except:
+     #       print('Receiving message failed.')
+     #   return message
+
     def receiveMessage(self):
-        if not self.__connectionStarted: return
-        try:
-            print('Connection')
-            message = 'defaultMessage'
-            while 1:
-                message = self.__connection.recv(self.__buffersize)
-                if not message: break
-        except:
-            print('Receiving message failed.')
-        return message
+        chunks = []
+        bytes_recd = 0
+        while bytes_recd < 104:
+            chunk = self.__connection.recv(min(104 - bytes_recd, 2048))
+            print(type(chunk))
+            if chunk == b'':
+                raise RuntimeError("socket connection broken")
+            chunks.append(chunk)
+            bytes_recd = bytes_recd + len(chunk)
+        return b''.join(chunks)
