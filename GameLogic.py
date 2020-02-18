@@ -41,6 +41,9 @@ class GameLogic:
         ui.PrintGetPortInfo()
         port = cc.GetUserInputString()
         network = EnhancedNetwork(ip)
+        network.connectToOther()
         for i in range(1, 10):
             network.sendMessage("Hello World")
+        network.receiveMessage()
+        network.endConnection()
         

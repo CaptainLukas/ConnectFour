@@ -7,43 +7,62 @@ class EnhancedNetwork:
     __port=45688
     __buffersize=256
     __ip = ''
+    __connection = socket
+    __connectionStarted = False
 
     def __init__(self,ip):
         self.__ip = ip
+        #AF_INET represents address and protocol family -> IPv4
+        #SOCK_STREAM sets the socket type
+        self.__connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         return
 
-    #opens connection
-    #def startNewConnection(ip,port,buffersize)
-        #check ip is valid ip
-        #check port is int
-        #check buffersize is int
-    #    return
+    def connectToOther(self):
+        if self.__connectionStarted : return
+        try:
+            self.__connection.connect((self.__ip, self.__port))
+            print('Connected')
+            self.__connectionStarted = True
+        except:
+            print('Connection Failed')
+        return
+
+    def waitForConnection(self):
+        if self.__connectionStarted: return
+        try:
+            self.__connection.bind(('127.0.0.1', self.__port))
+            self.__connection.listen(1)
+            self.__connection = self.__connection.accept()
+            print('Connected')
+            self.__connectionStarted = True
+        except:
+            print('Connection Failed')
+        return
 
     #closes connection
-    #def endConnection()
-      #  self.__connection.close()
-     #   return
+    def endConnection(self):
+        if not self.__connectionStarted: return
+        self.__connection.close()
+        return
 
     #sends message to connection
     def sendMessage(self, message):
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((self.__ip,self.__port))
-        s.send(message.encode('utf-8'))
-        s.close()
+        if not self.__connectionStarted: return
+        try:
+            self.__connection.send(message.encode('utf-8'))
+        except:
+            print('Sending message failed.')
         return
 
     #receives message from connection
     def receiveMessage(self):
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.bind(('127.0.0.1',self.__port))
-        s.listen(1)
-        conn = s.accept()
-        print('Connection')
-        message = 'defaultMessage'
-        while 1:
-            message = conn.recv(self.__buffersize)
-            if not message: break
-
-        conn.close()
-        s.close()
+        if not self.__connectionStarted: return
+        try:
+            print('Connection')
+            message = 'defaultMessage'
+            while 1:
+                message = self.__connection.recv(self.__buffersize)
+                if not message: break
+        except:
+            print('Receiving message failed.')
         return message
