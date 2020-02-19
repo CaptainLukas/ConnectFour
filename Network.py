@@ -51,31 +51,38 @@ class EnhancedNetwork:
     def sendMessage(self, message):
         if not self.__connectionStarted: return
         try:
+            message = 'CON4'+ message.encode('utf-8').len + 'E'+ message
             self.__connection.send(message.encode('utf-8'))
         except:
             print('Sending message failed.')
         return
 
-    #receives message from connection
-    #def receiveMessage(self):
-    #    if not self.__connectionStarted: return
-
-     #   try:
-     #       message = 'defaultMessage'
-     #       while 1:
-     #           message = self.__connection.recv(self.__buffersize)
-     #           if len(message) == 0: break
-     #       print('Message received')
-     #   except:
-     #       print('Receiving message failed.')
-     #   return message
-
     def receiveMessage(self):
         chunks = []
         bytes_recd = 0
-        while bytes_recd < 104:
-            chunk = self.__connection.recv(min(104 - bytes_recd, 2048))
-            print(type(chunk))
+        messagelen = 0
+        while(header != 'CON4'):
+            chunk = self.__connection.recv(1)
+            if chunk != bytes('C','utf-8'):
+                continue
+            chunk = self.__connection.recv(1)
+            if chunk != bytes('O','utf-8'):
+                continue
+            chunk = self.__connection.recv(1)
+            if chunk != bytes('N','utf-8'):
+                continue
+            chunk = self.__connection.recv(1)
+            if chunk != bytes('4','utf-8'):
+                continue
+
+
+            header = str(chunk)
+
+
+
+        while bytes_recd < messagelen:
+            chunk = self.__connection.recv(messagelen)
+            print(chunk)
             if chunk == b'':
                 raise RuntimeError("socket connection broken")
             chunks.append(chunk)
