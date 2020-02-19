@@ -61,7 +61,7 @@ class EnhancedNetwork:
         chunks = []
         bytes_recd = 0
         messagelen = 0
-        while(header != 'CON4'):
+        while(True):
             chunk = self.__connection.recv(1)
             if chunk != bytes('C','utf-8'):
                 continue
@@ -74,14 +74,19 @@ class EnhancedNetwork:
             chunk = self.__connection.recv(1)
             if chunk != bytes('4','utf-8'):
                 continue
+            break
 
+        bytenumbers=b''
+        while(chunk != bytes('E','utf-8')):
+            chunk = self.__connection.recv(1)
+            if chunk == bytes('E','utf-8'):
+                break
+            bytenumbers = bytenumbers+ chunk
 
-            header = str(chunk)
+        number = bytenumbers.decode('utf-8')
 
-
-
-        while bytes_recd < messagelen:
-            chunk = self.__connection.recv(messagelen)
+        while bytes_recd < number:
+            chunk = self.__connection.recv(min(number-bytes_recd, 2048))
             print(chunk)
             if chunk == b'':
                 raise RuntimeError("socket connection broken")
