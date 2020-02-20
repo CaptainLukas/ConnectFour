@@ -38,12 +38,12 @@ class GameLogic:
     def startConnection(self):
         ui.PrintGetIPInfo()
         ip = cc.GetUserInputString()
-        ui.PrintGetPortInfo()
-        port = cc.GetUserInputString()
+        #ui.PrintGetPortInfo()
+        #port = cc.GetUserInputString()
         network = EnhancedNetwork(ip)
-        network.connectToOther()
-        #for i in range(1, 10):
-        network.sendMessage("Hello World")
+        #network.connectToOther()
+        network.waitForConnection()
+        #network.sendMessage("Hello World")
         print(network.receiveMessage())
         print('Test')
         network.endConnection()

@@ -5,7 +5,7 @@ import socket
 
 # vl nur einfach die ausgewählte Spalte schicken und jeder schaut sich selbst an wie der move wird
 class EnhancedNetwork:
-    __port=45688
+    __port=90
     __buffersize=256
     __ip = ''
     __connection = socket
@@ -31,9 +31,9 @@ class EnhancedNetwork:
     def waitForConnection(self):
         if self.__connectionStarted: return
         try:
-            self.__connection.bind(('127.0.0.1', self.__port))
+            self.__connection.bind((socket.gethostname(), self.__port))
             self.__connection.listen(1)
-            self.__connection, addr = self.__connection.accept()
+            (self.__connection, addr) = self.__connection.accept()
             print('Connected')
             self.__connectionStarted = True
         except:
@@ -51,7 +51,7 @@ class EnhancedNetwork:
     def sendMessage(self, message):
         if not self.__connectionStarted: return
         try:
-            message = 'CON4'+ message.encode('utf-8').len + 'E'+ message
+            message = 'CON4'+ str(len(message.encode('utf-8'))) + 'E'+ message
             self.__connection.send(message.encode('utf-8'))
         except:
             print('Sending message failed.')
@@ -83,13 +83,6 @@ class EnhancedNetwork:
                 break
             bytenumbers = bytenumbers+ chunk
 
-        number = bytenumbers.decode('utf-8')
-
-        while bytes_recd < number:
-            chunk = self.__connection.recv(min(number-bytes_recd, 2048))
-            print(chunk)
-            if chunk == b'':
-                raise RuntimeError("socket connection broken")
-            chunks.append(chunk)
-            bytes_recd = bytes_recd + len(chunk)
-        return b''.join(chunks)
+        number = int(bytenumbers.decode('utf-8'))
+        chunk = self.__connection.recv(number)
+        return chunks#.decode('utf-8')
