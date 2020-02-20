@@ -5,7 +5,7 @@ import socket
 
 # vl nur einfach die ausgewählte Spalte schicken und jeder schaut sich selbst an wie der move wird
 class EnhancedNetwork:
-    __port=90
+    __port=45688
     __buffersize=256
     __ip = ''
     __connection = socket
@@ -85,4 +85,4 @@ class EnhancedNetwork:
 
         number = int(bytenumbers.decode('utf-8'))
         chunk = self.__connection.recv(number)
-        return chunks#.decode('utf-8')
+        return chunk.decode('utf-8')
