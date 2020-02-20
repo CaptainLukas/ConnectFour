@@ -21,9 +21,10 @@ class GameLogic:
         self.__matchfield.newField()
 
         self.testgame()
-        print('testing get char:')
-        ControlsConsole.GetUserInputChar()
+        #you want to connect or be connected?
+        #start connection as client or server
         self.startConnection()
+        #start game
         return
 
     def testgame(self):

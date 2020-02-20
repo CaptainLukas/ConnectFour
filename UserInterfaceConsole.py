@@ -2,6 +2,7 @@ from Spielerfarbe import Spielerfarbe
 import os
 
 def PrintField(field):
+    os.system("cls")  # empty console
     i = 5
     print('  1     2     3     4     5     6     7')
     while(i >=0):
@@ -19,14 +20,17 @@ def __printName(farbe):
         return 'O'
     else:
         return 'Fehler'
+
 def PrintWin():
+    os.system("cls")  # sollte Console leeren
     return
 
 def PrintLoss():
     return
 
 def PrintGetIPInfo():
-    os.system("cls")#sollte Console leeren
+    #empty console
+    os.system("cls")
     print("Please enter IP to connect to:")
     return
 
