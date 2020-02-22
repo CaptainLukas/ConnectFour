@@ -13,7 +13,7 @@ class GameLogic:
 
     def __init__(self):
         self.__matchfield = Spielfeld(sf.gelb)
-        self.__connection = EnhancedNetwork('192.168.1.86')
+        self.__connection = EnhancedNetwork()
         self.data=[]
 
     def startGame(self):
@@ -41,10 +41,9 @@ class GameLogic:
         ip = cc.GetUserInputString()
         #ui.PrintGetPortInfo()
         #port = cc.GetUserInputString()
-        network = EnhancedNetwork(ip)
-        network.connectToOther()
-        #network.waitForConnection()
-        #network.sendMessage("Hello World")
-        print(network.receiveMessage())
-        network.endConnection()
+        if not self.__connection.connectToOther(ip): return
+        #self.__connection.waitForConnection()
+        #self.__connection.sendMessage("Hello World")
+        print(self.__connection.receiveMessage())
+        self.__connection.endConnection()
         

@@ -8,9 +8,12 @@ import socket
 #ExampleMessage:
 # CON45EHello
 class EnhancedNetwork:
+    #port used for connection
     __port=45688
+    #this ip is never used, as ip has to be give to constructor
     __ip = '192.168.1.86'
     __connection = socket
+    #whether the socket is connected or not
     __connectionStarted = False
 
     def __init__(self):
@@ -19,19 +22,34 @@ class EnhancedNetwork:
         self.__connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         return
 
+    # gets the status of the connection
+    # return: whether the connection has started or not
+    def getConnectionStatus(self):
+        return self.__connectionStarted
+
     #connects to the other player
+    # ip: is the ip to connect to
+    # return: whether the connection was successful or not
     def connectToOther(self, ip):
         self.__ip = ip
         if self.__connectionStarted : return
+        #check if ip is a valid ip address
+        try:
+            socket.inet_aton(ip)
+        except socket.error:
+            print('invalid')
+            return
+        #try to connect to given ip and port
         try:
             self.__connection.connect((self.__ip, self.__port))
             print('Connected')
             self.__connectionStarted = True
         except:
             print('Connection Failed')
-        return
+        return self.__connectionStarted
 
     #waits for other player to connect
+    # return: whether the connection was successful or not
     def waitForConnection(self):
         if self.__connectionStarted: return
         try:
@@ -44,7 +62,7 @@ class EnhancedNetwork:
             self.__connectionStarted = True
         except:
             print('Connection Failed')
-        return
+        return self.__connectionStarted
 
     #closes connection
     def endConnection(self):
@@ -69,20 +87,31 @@ class EnhancedNetwork:
         chunks = []
         bytes_recd = 0
         messagelen = 0
-
+        isC = False
         #this loop checks for the header at the beginning of the message
         while(True):
-            chunk = self.__connection.recv(1)
-            if chunk != bytes('C','utf-8'):
+            if not isC:
+                chunk = self.__connection.recv(1)
+            if chunk != bytes('C','utf-8') or not isC:
                 continue
+            isC = False
+
             chunk = self.__connection.recv(1)
             if chunk != bytes('O','utf-8'):
+                if chunk == bytes('C', 'utf-8'):
+                    isC = True
                 continue
+
             chunk = self.__connection.recv(1)
             if chunk != bytes('N','utf-8'):
+                if chunk == bytes('C', 'utf-8'):
+                    isC = True
                 continue
+
             chunk = self.__connection.recv(1)
             if chunk != bytes('4','utf-8'):
+                if chunk == bytes('C', 'utf-8'):
+                    isC = True
                 continue
             break
 
