@@ -20,7 +20,7 @@ class GameLogic:
         #self.__matchfield = Spielfeld(sf.gelb)
         self.__matchfield.newField()
 
-        self.testgame()
+        #self.testgame()
         #you want to connect or be connected?
         #start connection as client or server
         self.startConnection()
@@ -37,13 +37,30 @@ class GameLogic:
         return
     
     def startConnection(self):
-        ui.PrintGetIPInfo()
-        ip = cc.GetUserInputString()
-        #ui.PrintGetPortInfo()
-        #port = cc.GetUserInputString()
-        if not self.__connection.connectToOther(ip): return
+
+        #if not self.__connection.connectToOther(ip): return
         #self.__connection.waitForConnection()
         #self.__connection.sendMessage("Hello World")
-        print(self.__connection.receiveMessage())
-        self.__connection.endConnection()
+        while(True):
+            inp = cc.GetUserInputChar()
+            if inp == 'c':
+                ui.PrintGetIPInfo()
+                ip = cc.GetUserInputString()
+                if not self.__connection.connectToOther(ip):
+                    ui.PrintError('connection error')
+
+            if inp == 'g':
+                if not self.__connection.waitForConnection():
+                    ui.PrintError('connection error')
+
+            if inp == 's':
+                ui.Print('input message:')
+                message = cc.GetUserInputString()
+                self.__connection.sendMessage(message)
+
+            if inp == 'r':
+                print(self.__connection.receiveMessage())
+            if inp == 'e':
+                self.__connection.endConnection()
+                break
         

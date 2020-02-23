@@ -69,6 +69,7 @@ class EnhancedNetwork:
         if not self.__connectionStarted: return
         self.__connection.close()
         print('Connection closed')
+        self.__connectionStarted = False
         return
 
     #sends message to connection
@@ -84,6 +85,7 @@ class EnhancedNetwork:
         return
 
     def receiveMessage(self):
+        if not self.__connectionStarted : return
         chunks = []
         bytes_recd = 0
         messagelen = 0
@@ -92,8 +94,8 @@ class EnhancedNetwork:
         while(True):
             if not isC:
                 chunk = self.__connection.recv(1)
-            if chunk != bytes('C','utf-8') or not isC:
-                continue
+                if chunk != bytes('C','utf-8'):
+                    continue
             isC = False
 
             chunk = self.__connection.recv(1)
@@ -113,6 +115,7 @@ class EnhancedNetwork:
                 if chunk == bytes('C', 'utf-8'):
                     isC = True
                 continue
+            print('test')
             break
 
         bytenumbers=b''
@@ -124,6 +127,7 @@ class EnhancedNetwork:
             bytenumbers = bytenumbers+ chunk
 
         number = int(bytenumbers.decode('utf-8'))
+        print(str(number))
         #read payload
         chunk = self.__connection.recv(number)
         return chunk.decode('utf-8')

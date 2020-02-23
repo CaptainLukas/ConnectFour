@@ -37,3 +37,10 @@ def PrintGetIPInfo():
 def PrintGetPortInfo():
     print("Please enter port to connect to:")
     return
+
+def Print(msg):
+    print(msg)
+    return
+
+def PrintError(error):
+    print('\033[93m' + error)
