@@ -115,7 +115,6 @@ class EnhancedNetwork:
                 if chunk == bytes('C', 'utf-8'):
                     isC = True
                 continue
-            print('test')
             break
 
         bytenumbers=b''
@@ -127,7 +126,6 @@ class EnhancedNetwork:
             bytenumbers = bytenumbers+ chunk
 
         number = int(bytenumbers.decode('utf-8'))
-        print(str(number))
         #read payload
         chunk = self.__connection.recv(number)
         return chunk.decode('utf-8')
