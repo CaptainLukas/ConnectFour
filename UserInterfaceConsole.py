@@ -38,6 +38,10 @@ def PrintGetPortInfo():
     print("Please enter port to connect to:")
     return
 
+def PrintConnectionInfo():
+    print("server or client?")
+    return
+
 def Print(msg):
     print(msg)
     return
