@@ -17,39 +17,39 @@ class GameLogic:
         self.data=[]
 
     def game(self):
-    {
-        while(true)
-        {
-        ui.PrintConnectionInfo()
-        key = cc.GetUserInputChar()
-        if key == 'c':
-            beServer = False
-            break
-        if key =='s':
-            beServer = True
-            break
-        ui.PrintError('not a valid input')
-        }
-        
+        while(True):
+
+            ui.PrintConnectionInfo()
+            key = cc.GetUserInputChar()
+            if key == 'c':
+                beServer = False
+                break
+            if key =='s':
+                beServer = True
+                break
+            ui.PrintError('not a valid input')
+
         self.__startConnection(beServer)
         #übergeben ob erster oder zweiter
         self.__startGame()#connInfo gleich als indikator für ersten und zweiten?
-        
-    }
     
     def __startGame(self, first):
-        over = False
+        gameOver = False
         self.__matchfield.newField()
-        if (first):
-            #startfirst()
-        else:
-            #startseconde()
-        while(not over)
-        {
+        if (not first):
+            pass
+            #auf move von anderem warten
+
+        while(not gameOver):
+            self.gameMove()
             #Spielablauf
-        }
         return
-    
+
+    def gameMove(self):
+        #getinput
+        
+        return
+
     def __startConnection(self, asServer):
 
         #wenn asServer true, dann 
