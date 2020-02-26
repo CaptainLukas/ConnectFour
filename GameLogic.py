@@ -16,31 +16,47 @@ class GameLogic:
         self.__connection = EnhancedNetwork()
         self.data=[]
 
-    def startGame(self):
-        #self.__matchfield = Spielfeld(sf.gelb)
+    def game(self):
+    {
+        self.ui.PrintConnectionInfo()#noch zu implementieren
+        connInfo = cc.GetConnectionInfo()#noch zu implementieren
+        self.__startConnection(connInfo)
+        #übergeben ob erster oder zweiter
+        self.__startGame()#connInfo gleich als indikator für ersten und zweiten?
+        
+    }
+    
+    def __startGame(self, first):
+        over = False
         self.__matchfield.newField()
-
-        #self.testgame()
-        #you want to connect or be connected?
-        #start connection as client or server
-        self.startConnection()
-        #start game
-        return
-
-    def testgame(self):
-        ui.PrintField(self.__matchfield.getField())
-        self.__matchfield.makeMove(3, sf.gelb)
-        self.__matchfield.makeMove(4,sf.rot)
-        self.__matchfield.makeMove(4, sf.gelb)
-        self.__matchfield.makeMove(3, sf.rot)
-        ui.PrintField(self.__matchfield.getField())
+        if (first):
+            #startfirst()
+        else:
+            #startseconde()
+        while(not over)
+        {
+            #Spielablauf
+        }
         return
     
-    def startConnection(self):
+    def __startConnection(self, asServer):
 
-        #if not self.__connection.connectToOther(ip): return
-        #self.__connection.waitForConnection()
-        #self.__connection.sendMessage("Hello World")
+        #wenn asServer true, dann 
+        #waitfor connection
+        #if not self.__connection.waitForConnection():
+            #ui.PrintError('connection error')
+        #else
+        #connect to
+        #ui.PrintGetIPInfo()
+        #ip = cc.GetUserInputString()
+        #if not self.__connection.connectToOther(ip):
+            #ui.PrintError('connection error')
+        
+        #verbunden, jetzt Spiel starten
+        #herausfinden wer beginnt
+        #startgame
+        
+        
         while(True):
             inp = cc.GetUserInputChar()
             if inp == 'c':
@@ -63,4 +79,3 @@ class GameLogic:
             if inp == 'e':
                 self.__connection.endConnection()
                 break
-        
