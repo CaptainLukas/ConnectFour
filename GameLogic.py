@@ -18,9 +18,20 @@ class GameLogic:
 
     def game(self):
     {
-        self.ui.PrintConnectionInfo()#noch zu implementieren
-        connInfo = cc.GetConnectionInfo()#noch zu implementieren
-        self.__startConnection(connInfo)
+        while(true)
+        {
+        ui.PrintConnectionInfo()
+        key = cc.GetUserInputChar()
+        if key == 'c':
+            beServer = False
+            break
+        if key =='s':
+            beServer = True
+            break
+        ui.PrintError('not a valid input')
+        }
+        
+        self.__startConnection(beServer)
         #übergeben ob erster oder zweiter
         self.__startGame()#connInfo gleich als indikator für ersten und zweiten?
         
