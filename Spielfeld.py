@@ -49,6 +49,18 @@ class Spielfeld:
             print('Error')
 
         return self.__field
+    
+    # gets the matchfield as two dimensional array of Spielerfarbe
+    # return: the matchfield as two dimensional array
+    def getFieldMatrix(self):
+        matrixField = [][]
+        return matrixField
+    
+    #gets the matchfield as string in printable order
+    # return: the matchfield as string in printable order
+    def getFieldString(self):
+        stringField = ''
+        return stringField
 
     # this method adds a piece to the first free field in the selected column in the players color
     # column:int [1,7] the column selected to to add a piece
