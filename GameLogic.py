@@ -90,5 +90,3 @@ class GameLogic:
             if inp == 'e':
                 self.__connection.endConnection()
                 break
-                
-        #test für merge
