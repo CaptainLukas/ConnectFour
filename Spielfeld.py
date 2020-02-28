@@ -50,6 +50,9 @@ class Spielfeld:
 
         return self.__field
 
+    def getFieldTestMerge(self):
+        return
+
     # this method adds a piece to the first free field in the selected column in the players color
     # column:int [1,7] the column selected to to add a piece
     # return:bool returns whether the move was valid
