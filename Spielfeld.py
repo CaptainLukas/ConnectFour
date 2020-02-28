@@ -53,7 +53,7 @@ class Spielfeld:
     # gets the matchfield as two dimensional array of Spielerfarbe
     # return: the matchfield as two dimensional array
     def getFieldMatrix(self):
-        matrixField = [][]
+        matrixField = [7][6]
         return matrixField
     
     # gets the matchfield as string in printable order
@@ -67,9 +67,6 @@ class Spielfeld:
     def getFieldSum(self):
         sum = 0
         return sum
-
-    def getFieldTestMerge(self):
-        return
 
     # this method adds a piece to the first free field in the selected column in the players color
     # column:int [1,7] the column selected to to add a piece
