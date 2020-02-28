@@ -56,11 +56,17 @@ class Spielfeld:
         matrixField = [][]
         return matrixField
     
-    #gets the matchfield as string in printable order
+    # gets the matchfield as string in printable order
     # return: the matchfield as string in printable order
     def getFieldString(self):
         stringField = ''
         return stringField
+    
+    # gets the sum of the markers in the matchfield
+    # return: the sum of markers in the matchfield
+    def getFieldSum(self):
+        sum = 0
+        return sum
 
     # this method adds a piece to the first free field in the selected column in the players color
     # column:int [1,7] the column selected to to add a piece
