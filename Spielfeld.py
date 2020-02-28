@@ -49,6 +49,24 @@ class Spielfeld:
             print('Error')
 
         return self.__field
+    
+    # gets the matchfield as two dimensional array of Spielerfarbe
+    # return: the matchfield as two dimensional array
+    def getFieldMatrix(self):
+        matrixField = [][]
+        return matrixField
+    
+    # gets the matchfield as string in printable order
+    # return: the matchfield as string in printable order
+    def getFieldString(self):
+        stringField = ''
+        return stringField
+    
+    # gets the sum of the markers in the matchfield
+    # return: the sum of markers in the matchfield
+    def getFieldSum(self):
+        sum = 0
+        return sum
 
     def getFieldTestMerge(self):
         return
